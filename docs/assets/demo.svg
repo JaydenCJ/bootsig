@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="580" viewBox="0 0 920 580" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="14">
+  <!-- Terminal transcript of real runs of `bootsig compare` and `bootsig mde`
+       on the committed example runs. Text content is copied verbatim from an
+       actual execution (seed 42); scripts/smoke.sh asserts these numbers. -->
+  <rect width="920" height="580" rx="10" fill="#0d1117"/>
+  <rect width="920" height="34" rx="10" fill="#161b22"/>
+  <rect y="20" width="920" height="14" fill="#161b22"/>
+  <circle cx="22" cy="17" r="6" fill="#ff5f57"/>
+  <circle cx="42" cy="17" r="6" fill="#febc2e"/>
+  <circle cx="62" cy="17" r="6" fill="#28c840"/>
+  <text x="460" y="22" fill="#8b949e" text-anchor="middle" font-size="12">bootsig — is 73% actually better than 71%?</text>
+  <g fill="#c9d1d9">
+    <text x="24" y="64"><tspan fill="#7ee787">$</tspan> bootsig compare examples/baseline.jsonl examples/candidate.jsonl</text>
+    <text x="24" y="92">  A  examples/baseline.jsonl    n=100   mean 0.7100   95% CI [0.6100, 0.7900]</text>
+    <text x="24" y="116">  B  examples/candidate.jsonl   n=100   mean 0.7300   95% CI [0.6300, 0.8100]</text>
+    <text x="24" y="144">  wins / losses / ties 13 / 11 / 76   <tspan fill="#8b949e">(B better / A better / tied)</tspan></text>
+    <text x="24" y="168">  difference (B - A)   <tspan fill="#d29922">+0.0200</tspan>   95% CI [-0.0700, +0.1200]</text>
+    <text x="24" y="192">  permutation test     <tspan fill="#d29922">p = 0.8375</tspan>   (sign-flip, 10000 resamples)</text>
+    <text x="24" y="216">  exact McNemar        p = 0.8388   (24 discordant pairs)</text>
+    <text x="24" y="248">  verdict: <tspan fill="#f85149">NOT SIGNIFICANT</tspan> at alpha = 0.05 — a +0.0200 difference at n=100</text>
+    <text x="24" y="272">  is within noise</text>
+    <text x="24" y="312"><tspan fill="#7ee787">$</tspan> bootsig compare examples/baseline.jsonl examples/improved.jsonl</text>
+    <text x="24" y="340">  difference (B - A)   <tspan fill="#7ee787">+0.1300</tspan>   95% CI [+0.0517, +0.2200]</text>
+    <text x="24" y="364">  permutation test     <tspan fill="#7ee787">p = 0.0051</tspan>   (sign-flip, 10000 resamples)</text>
+    <text x="24" y="392">  verdict: <tspan fill="#7ee787">SIGNIFICANT</tspan> at alpha = 0.05 — B improves on A by +0.1300 (p = 0.0051)</text>
+    <text x="24" y="432"><tspan fill="#7ee787">$</tspan> bootsig mde examples/baseline.jsonl examples/candidate.jsonl</text>
+    <text x="24" y="460">  minimum detectable difference at n=100: <tspan fill="#d29922">±0.1378</tspan></text>
+    <text x="24" y="484">  → real differences smaller than ±0.1378 will usually go undetected.</text>
+    <text x="24" y="524"><tspan fill="#7ee787">$</tspan> bootsig compare a.jsonl b.jsonl --fail-on regression  <tspan fill="#8b949e"># exit 1 on a real regression</tspan></text>
+    <text x="24" y="552">  seed 42 · bca bootstrap, 10000 resamples · <tspan fill="#8b949e">reproducible byte for byte</tspan></text>
+  </g>
+</svg>
